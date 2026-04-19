@@ -1,7 +1,7 @@
 <!--
-AP CSP Create Task: Art Portfolio Website.
-This project uses HTML, CSS, and JavaScript to create an interactive
-digital art gallery with a responsive layout and lightbox interaction.
+Student Grade Tracker app.
+This page helps students and teachers track assignment grades,
+calculate averages, and monitor progress.
 -->
 
 <!DOCTYPE html>
@@ -9,22 +9,21 @@ digital art gallery with a responsive layout and lightbox interaction.
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Jacoson4 Art Portfolio</title>
+    <title>Student Grade Tracker</title>
     <link rel="stylesheet" href="styles.css">
     <script src="script.js" defer></script>
 </head>
 <body>
     <header>
         <div class="brand-bar">
-            <h1>Jacoson4 Art</h1>
-            <p>Creative stories in color and line.</p>
+            <h1>Grade Tracker</h1>
+            <p>Organize assignments, review scores, and track your progress.</p>
         </div>
         <nav>
             <ul>
                 <li><a href="#home">Home</a></li>
-                <li><a href="#gallery">Gallery</a></li>
-                <li><a href="#about">About</a></li>
-                <li><a href="#contact">Contact</a></li>
+                <li><a href="#tracker">Tracker</a></li>
+                <li><a href="#scale">Grade Scale</a></li>
             </ul>
         </nav>
     </header>
@@ -32,93 +31,109 @@ digital art gallery with a responsive layout and lightbox interaction.
     <main>
         <section id="home" class="hero">
             <div class="hero-copy">
-                <h2>Welcome to my art portfolio.</h2>
-                <p>Discover digital paintings, sketches, and mixed media pieces that tell a creative story.</p>
+                <h2>Welcome to your student grade tracker.</h2>
+                <p>Use this simple tool to enter assignments, calculate grade percentages, and see averages instantly.</p>
                 <div class="hero-actions">
-                    <a class="button" href="#gallery">View Gallery</a>
-                    <a class="button secondary" href="#contact">Contact Artist</a>
+                    <a class="button" href="#tracker">Start Tracking</a>
+                    <a class="button secondary" href="#scale">View Scale</a>
                 </div>
             </div>
         </section>
 
-        <section id="gallery" class="section-block">
+        <section id="tracker" class="section-block">
             <div class="section-header">
-                <h2>Gallery</h2>
-                <p>Click a piece to learn more about the technique and inspiration.</p>
+                <h2>Grade Entry</h2>
+                <p>Add each assignment to track total percent score and weighted average.</p>
             </div>
-            <div class="gallery-filter" aria-label="Filter gallery by category">
-                <button class="active" data-filter="all">All</button>
-                <button data-filter="sketches">Sketches</button>
-                <button data-filter="digital">Digital</button>
-                <button data-filter="paintings">Paintings</button>
-            </div>
-            <div class="gallery-grid">
-                <article class="art-piece" data-category="digital" data-title="Moonlight Path" data-description="A glowing digital landscape study with blue and gold accents.">
-                    <div class="art-preview">Moonlight Path</div>
-                    <span class="art-category">Digital</span>
-                </article>
-                <article class="art-piece" data-category="sketches" data-title="Sketchbook Moment" data-description="A quick pencil study capturing a quiet movement.">
-                    <div class="art-preview">Sketchbook Moment</div>
-                    <span class="art-category">Sketch</span>
-                </article>
-                <article class="art-piece" data-category="paintings" data-title="Sunrise Bloom" data-description="An acrylic painting of flowers in warm morning light.">
-                    <div class="art-preview">Sunrise Bloom</div>
-                    <span class="art-category">Painting</span>
-                </article>
-                <article class="art-piece" data-category="digital" data-title="City Lights" data-description="A digital cityscape that blends neon tones and night reflections.">
-                    <div class="art-preview">City Lights</div>
-                    <span class="art-category">Digital</span>
-                </article>
-            </div>
-        </section>
 
-        <section id="about" class="section-block">
-            <div class="section-header">
-                <h2>About the Artist</h2>
-            </div>
-            <p>I am a student artist who loves exploring color, texture, and digital storytelling. My work combines sketching practice and digital painting to create mood and movement.</p>
-        </section>
+            <form id="grade-form" class="tracker-form">
+                <div class="form-grid">
+                    <label for="student-name">Student Name</label>
+                    <input type="text" id="student-name" name="studentName" placeholder="Enter student name" required>
 
-        <section id="contact" class="section-block contact-section">
-            <div class="section-header">
-                <h2>Contact</h2>
-                <p>Send a message if you'd like to collaborate or learn more about my creative process.</p>
-            </div>
-            <form id="contact-form">
-                <label for="name">Name</label>
-                <input type="text" id="name" name="name" placeholder="Your name" required>
+                    <label for="assignment-name">Assignment</label>
+                    <input type="text" id="assignment-name" name="assignmentName" placeholder="Assignment title" required>
 
-                <label for="email">Email</label>
-                <input type="email" id="email" name="email" placeholder="you@example.com" required>
+                    <label for="category">Category</label>
+                    <select id="category" name="category">
+                        <option value="Homework">Homework</option>
+                        <option value="Quiz">Quiz</option>
+                        <option value="Test">Test</option>
+                        <option value="Project">Project</option>
+                    </select>
 
-                <label for="message">Message</label>
-                <textarea id="message" name="message" rows="4" placeholder="Write a message..."></textarea>
+                    <label for="score">Score</label>
+                    <input type="number" id="score" name="score" placeholder="Earned points" min="0" required>
 
-                <button type="submit" class="button">Send Message</button>
+                    <label for="max-score">Max Points</label>
+                    <input type="number" id="max-score" name="maxScore" placeholder="Total points" min="1" required>
+
+                    <label for="weight">Weight</label>
+                    <input type="number" id="weight" name="weight" placeholder="Weight (default 1)" min="0.1" step="0.1" value="1" required>
+                </div>
+
+                <button type="submit" class="button">Add Grade</button>
                 <p id="form-feedback" class="feedback"></p>
             </form>
+
+            <div class="stats-grid">
+                <article class="stat-card">
+                    <p class="stat-label">Assignments</p>
+                    <h3 id="total-assignments">0</h3>
+                </article>
+                <article class="stat-card">
+                    <p class="stat-label">Average Score</p>
+                    <h3 id="average-percent">—</h3>
+                </article>
+                <article class="stat-card">
+                    <p class="stat-label">Weighted Average</p>
+                    <h3 id="weighted-average">—</h3>
+                </article>
+            </div>
+
+            <div class="table-wrapper">
+                <table id="grades-table">
+                    <caption>Recorded assignments and score details</caption>
+                    <thead>
+                        <tr>
+                            <th>Assignment</th>
+                            <th>Category</th>
+                            <th>Score</th>
+                            <th>Max</th>
+                            <th>%</th>
+                            <th>Weight</th>
+                            <th>Weighted %</th>
+                            <th>Action</th>
+                        </tr>
+                    </thead>
+                    <tbody id="grades-body"></tbody>
+                </table>
+            </div>
         </section>
     </main>
 
     <aside>
-        <h3>Latest Updates</h3>
-        <ul id="updates-list">
-            <li>New artwork added: Moonlight Path</li>
-            <li>Gallery filter now works</li>
-            <li>Contact form is active</li>
-        </ul>
+        <section id="scale" class="section-block aside-block">
+            <h3>Grade Scale</h3>
+            <ul>
+                <li>A: 90% and above</li>
+                <li>B: 80% to 89%</li>
+                <li>C: 70% to 79%</li>
+                <li>D: 60% to 69%</li>
+                <li>F: below 60%</li>
+            </ul>
+        </section>
+
+        <section class="section-block aside-block">
+            <h3>Recent Activity</h3>
+            <ul id="updates-list">
+                <li>No grades added yet.</li>
+            </ul>
+        </section>
     </aside>
 
     <footer>
-        <p>&copy; 2026 Jacoson4 Art Portfolio. All rights reserved.</p>
+        <p>&copy; 2026 Student Grade Tracker. All rights reserved.</p>
     </footer>
-
-    <div id="lightbox" class="lightbox hidden" role="dialog" aria-modal="true">
-        <div class="lightbox-panel">
-            <button id="lightbox-close" class="close-button" aria-label="Close preview">×</button>
-            <h3 id="lightbox-title">Artwork Title</h3>
-            <p id="lightbox-description">Artwork description appears here.</p>
-        </div>
-    </div>
 </body>
 </html>
