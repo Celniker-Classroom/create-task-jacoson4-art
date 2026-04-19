@@ -34,7 +34,7 @@ a {
 header {
     background: var(--surface);
     border-bottom: 1px solid var(--border);
-    padding: 24px 20px;
+    padding: 16px 20px;
     position: sticky;
     top: 0;
     z-index: 10;
@@ -43,12 +43,12 @@ header {
 .brand-bar {
     display: flex;
     flex-direction: column;
-    gap: 6px;
+    gap: 4px;
 }
 
 .brand-bar h1 {
     margin: 0;
-    font-size: clamp(1.75rem, 2.5vw, 2.7rem);
+    font-size: clamp(1.5rem, 2vw, 2.2rem);
 }
 
 .brand-bar p {
@@ -57,7 +57,7 @@ header {
 }
 
 nav {
-    margin-top: 18px;
+    margin-top: 12px;
 }
 
 nav ul {
