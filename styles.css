@@ -161,6 +161,12 @@ main {
     color: var(--muted);
 }
 
+.student-summary {
+    margin: 0 0 24px;
+    color: var(--primary-dark);
+    font-weight: 600;
+}
+
 .tracker-form {
     display: grid;
     gap: 20px;

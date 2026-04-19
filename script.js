@@ -4,11 +4,21 @@ document.addEventListener('DOMContentLoaded', () => {
     const totalAssignments = document.getElementById('total-assignments');
     const averagePercent = document.getElementById('average-percent');
     const weightedAverage = document.getElementById('weighted-average');
+    const letterGrade = document.getElementById('letter-grade');
+    const studentSummary = document.getElementById('student-summary');
     const formFeedback = document.getElementById('form-feedback');
     const updatesList = document.getElementById('updates-list');
 
     function formatPercent(value) {
         return `${value.toFixed(1)}%`;
+    }
+
+    function getLetterGrade(value) {
+        if (value >= 90) return 'A';
+        if (value >= 80) return 'B';
+        if (value >= 70) return 'C';
+        if (value >= 60) return 'D';
+        return 'F';
     }
 
     function updateSummary() {
@@ -18,6 +28,7 @@ document.addEventListener('DOMContentLoaded', () => {
             totalAssignments.textContent = '0';
             averagePercent.textContent = '—';
             weightedAverage.textContent = '—';
+            letterGrade.textContent = '—';
             return;
         }
 
@@ -30,9 +41,13 @@ document.addEventListener('DOMContentLoaded', () => {
         const totalWeight = entries.reduce((sum, entry) => sum + entry.weight, 0);
         const weightedSum = entries.reduce((sum, entry) => sum + entry.percent * entry.weight, 0);
 
+        const average = totalPercent / entries.length;
+        const weighted = totalWeight > 0 ? weightedSum / totalWeight : 0;
+
         totalAssignments.textContent = String(entries.length);
-        averagePercent.textContent = formatPercent(totalPercent / entries.length);
-        weightedAverage.textContent = totalWeight > 0 ? formatPercent(weightedSum / totalWeight) : '—';
+        averagePercent.textContent = formatPercent(average);
+        weightedAverage.textContent = formatPercent(weighted);
+        letterGrade.textContent = getLetterGrade(weighted);
     }
 
     function addUpdate(message) {
@@ -58,7 +73,7 @@ document.addEventListener('DOMContentLoaded', () => {
         }
 
         const percent = (score / maxScore) * 100;
-        const weightedPercent = percent * weight;
+        const contribution = percent * weight;
 
         const row = document.createElement('tr');
         row.dataset.percent = String(percent);
@@ -71,17 +86,21 @@ document.addEventListener('DOMContentLoaded', () => {
             <td>${maxScore}</td>
             <td>${formatPercent(percent)}</td>
             <td>${weight.toFixed(1)}</td>
-            <td>${formatPercent(weightedPercent / weight)}</td>
+            <td>${formatPercent(contribution)}</td>
             <td><button type="button" class="remove-button">Remove</button></td>
         `;
 
         row.querySelector('.remove-button').addEventListener('click', () => {
             row.remove();
+            if (gradesBody.children.length === 0) {
+                studentSummary.textContent = 'No student selected yet.';
+            }
             updateSummary();
             addUpdate(`Removed assignment: ${assignmentName}`);
         });
 
         gradesBody.appendChild(row);
+        studentSummary.textContent = `Current student: ${studentName}`;
         updateSummary();
         formFeedback.textContent = `Added ${assignmentName} for ${studentName}.`;
         formFeedback.style.color = '#16a34a';

@@ -16,7 +16,7 @@ calculate averages, and monitor progress.
 <body>
     <header>
         <div class="brand-bar">
-            <h1>Grade Tracker</h1>
+            <h1>Student Grade Tracker</h1>
             <p>Organize assignments, review scores, and track your progress.</p>
         </div>
         <nav>
@@ -32,7 +32,7 @@ calculate averages, and monitor progress.
         <section id="home" class="hero">
             <div class="hero-copy">
                 <h2>Welcome to your student grade tracker.</h2>
-                <p>Use this simple tool to enter assignments, calculate grade percentages, and see averages instantly.</p>
+                <p>Use this simple tool to enter assignments, calculate grade percentages, and monitor your current grade.</p>
                 <div class="hero-actions">
                     <a class="button" href="#tracker">Start Tracking</a>
                     <a class="button secondary" href="#scale">View Scale</a>
@@ -43,8 +43,10 @@ calculate averages, and monitor progress.
         <section id="tracker" class="section-block">
             <div class="section-header">
                 <h2>Grade Entry</h2>
-                <p>Add each assignment to track total percent score and weighted average.</p>
+                <p>Add each assignment to track percent scores, weights, and summary grade.</p>
             </div>
+
+            <p id="student-summary" class="student-summary">No student selected yet.</p>
 
             <form id="grade-form" class="tracker-form">
                 <div class="form-grid">
@@ -89,6 +91,10 @@ calculate averages, and monitor progress.
                     <p class="stat-label">Weighted Average</p>
                     <h3 id="weighted-average">—</h3>
                 </article>
+                <article class="stat-card">
+                    <p class="stat-label">Current Letter Grade</p>
+                    <h3 id="letter-grade">—</h3>
+                </article>
             </div>
 
             <div class="table-wrapper">
@@ -102,7 +108,7 @@ calculate averages, and monitor progress.
                             <th>Max</th>
                             <th>%</th>
                             <th>Weight</th>
-                            <th>Weighted %</th>
+                            <th>Contribution</th>
                             <th>Action</th>
                         </tr>
                     </thead>

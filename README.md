@@ -1,43 +1,34 @@
 [![Review Assignment Due Date](https://classroom.github.com/assets/deadline-readme-button-22041afd0340ce965d47ae6ef1cefeee28c7c493a6346c4f15d667ab976d596c.svg)](https://classroom.github.com/a/ozu-RSjp)
 [![Open in Codespaces](https://classroom.github.com/assets/launch-codespace-2972f46106e565e64193e422d61a12cf1da4916b45550586e14ef0a7c637dd04.svg)](https://classroom.github.com/open-in-codespaces?assignment_repo_id=23545513)
-# Simple Web Template
+# Student Grade Tracker
 
-A basic boilerplate for web projects using HTML, CSS, and JavaScript. This template uses a flat file structure for simplicity.
+This project is a student grade tracker built with HTML, CSS, and JavaScript.
+It lets users add assignments, calculate score percentages, compute weighted averages, and track a letter grade.
 
 ## Project Structure
 
-All core files are located in the root directory for easy access.
+All core files are located in the root directory.
 
-* index.html - The main structure of the website.
-* styles.css - The stylesheet for all visual design.
-* script.js - The JavaScript file for site logic and interactivity.
-* images/ - A folder to store all graphic assets (JPG, PNG, SVG).
+* index.html - Main webpage structure and grade tracker interface.
+* styles.css - Custom layout and styling for the tracker.
+* script.js - JavaScript logic for grade entry, calculations, and interactive updates.
 
-## File Descriptions
+## Features
 
-### index.html
-The entry point of the site. It includes a link to the CSS file in the head and a reference to the JavaScript file at the end of the body.
+* Add assignments with score, max points, category, and weight.
+* View assignment details in a table.
+* See assignment count, average score, weighted average, and current letter grade.
+* Remove entries and update the summary instantly.
 
-### styles.css
-Contains all custom CSS. It is linked directly in the HTML as <link rel="stylesheet" href="styles.css">.
+## How to Run
 
-### script.js
-Contains all functional code. It is linked at the bottom of the HTML as <script src="script.js"></script>.
-
-## How to Run with GitHub Codespaces
-
-1. Go to your repository on GitHub.com.
-2. Click the green "Code" button.
-3. Select the "Codespaces" tab and click "Create codespace on main".
-4. Once the editor loads, click "Go Live" in the bottom status bar or right-click index.html and select "Open with Live Server" to view your site.
-
-
+1. Open the repository in GitHub Codespaces or your local editor.
+2. Open `index.html` in a browser.
+3. Use the form to add assignment grades and see the tracker update live.
 
 ## How to Save and Push Changes
 
-In Codespaces, your files save automatically to the cloud, but you must "Commit" and "Push" to update your actual GitHub repository.
-
-1. Click the "Source Control" icon in the left sidebar (it looks like a branch/node).
-2. Type a short message in the "Message" box describing what you changed (e.g., "Updated styles").
-3. Click the "Commit" button.
-4. Click the "Sync Changes" or "Push" button to send the updates back to GitHub.com.
+1. Open the Git panel or use terminal commands.
+2. Stage changed files.
+3. Commit with a short description.
+4. Push changes to GitHub.
