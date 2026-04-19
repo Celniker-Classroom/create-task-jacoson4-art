@@ -1,13 +1,124 @@
+<!--
+AP CSP Create Task: Art Portfolio Website.
+This project uses HTML, CSS, and JavaScript to create an interactive
+digital art gallery with a responsive layout and lightbox interaction.
+-->
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Home</title>
-    <script src="script.js" defer></script>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Jacoson4 Art Portfolio</title>
     <link rel="stylesheet" href="styles.css">
+    <script src="script.js" defer></script>
 </head>
 <body>
-    <h1>Your html goes here...</h1>
-    <br>See the <a href="README.md">README</a> for project details
+    <header>
+        <div class="brand-bar">
+            <h1>Jacoson4 Art</h1>
+            <p>Creative stories in color and line.</p>
+        </div>
+        <nav>
+            <ul>
+                <li><a href="#home">Home</a></li>
+                <li><a href="#gallery">Gallery</a></li>
+                <li><a href="#about">About</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <section id="home" class="hero">
+            <div class="hero-copy">
+                <h2>Welcome to my art portfolio.</h2>
+                <p>Discover digital paintings, sketches, and mixed media pieces that tell a creative story.</p>
+                <div class="hero-actions">
+                    <a class="button" href="#gallery">View Gallery</a>
+                    <a class="button secondary" href="#contact">Contact Artist</a>
+                </div>
+            </div>
+        </section>
+
+        <section id="gallery" class="section-block">
+            <div class="section-header">
+                <h2>Gallery</h2>
+                <p>Click a piece to learn more about the technique and inspiration.</p>
+            </div>
+            <div class="gallery-filter" aria-label="Filter gallery by category">
+                <button class="active" data-filter="all">All</button>
+                <button data-filter="sketches">Sketches</button>
+                <button data-filter="digital">Digital</button>
+                <button data-filter="paintings">Paintings</button>
+            </div>
+            <div class="gallery-grid">
+                <article class="art-piece" data-category="digital" data-title="Moonlight Path" data-description="A glowing digital landscape study with blue and gold accents.">
+                    <div class="art-preview">Moonlight Path</div>
+                    <span class="art-category">Digital</span>
+                </article>
+                <article class="art-piece" data-category="sketches" data-title="Sketchbook Moment" data-description="A quick pencil study capturing a quiet movement.">
+                    <div class="art-preview">Sketchbook Moment</div>
+                    <span class="art-category">Sketch</span>
+                </article>
+                <article class="art-piece" data-category="paintings" data-title="Sunrise Bloom" data-description="An acrylic painting of flowers in warm morning light.">
+                    <div class="art-preview">Sunrise Bloom</div>
+                    <span class="art-category">Painting</span>
+                </article>
+                <article class="art-piece" data-category="digital" data-title="City Lights" data-description="A digital cityscape that blends neon tones and night reflections.">
+                    <div class="art-preview">City Lights</div>
+                    <span class="art-category">Digital</span>
+                </article>
+            </div>
+        </section>
+
+        <section id="about" class="section-block">
+            <div class="section-header">
+                <h2>About the Artist</h2>
+            </div>
+            <p>I am a student artist who loves exploring color, texture, and digital storytelling. My work combines sketching practice and digital painting to create mood and movement.</p>
+        </section>
+
+        <section id="contact" class="section-block contact-section">
+            <div class="section-header">
+                <h2>Contact</h2>
+                <p>Send a message if you'd like to collaborate or learn more about my creative process.</p>
+            </div>
+            <form id="contact-form">
+                <label for="name">Name</label>
+                <input type="text" id="name" name="name" placeholder="Your name" required>
+
+                <label for="email">Email</label>
+                <input type="email" id="email" name="email" placeholder="you@example.com" required>
+
+                <label for="message">Message</label>
+                <textarea id="message" name="message" rows="4" placeholder="Write a message..."></textarea>
+
+                <button type="submit" class="button">Send Message</button>
+                <p id="form-feedback" class="feedback"></p>
+            </form>
+        </section>
+    </main>
+
+    <aside>
+        <h3>Latest Updates</h3>
+        <ul id="updates-list">
+            <li>New artwork added: Moonlight Path</li>
+            <li>Gallery filter now works</li>
+            <li>Contact form is active</li>
+        </ul>
+    </aside>
+
+    <footer>
+        <p>&copy; 2026 Jacoson4 Art Portfolio. All rights reserved.</p>
+    </footer>
+
+    <div id="lightbox" class="lightbox hidden" role="dialog" aria-modal="true">
+        <div class="lightbox-panel">
+            <button id="lightbox-close" class="close-button" aria-label="Close preview">×</button>
+            <h3 id="lightbox-title">Artwork Title</h3>
+            <p id="lightbox-description">Artwork description appears here.</p>
+        </div>
+    </div>
 </body>
 </html>
