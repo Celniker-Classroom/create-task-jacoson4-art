@@ -7,7 +7,6 @@ document.addEventListener('DOMContentLoaded', () => {
     const letterGrade = document.getElementById('letter-grade');
     const studentSummary = document.getElementById('student-summary');
     const formFeedback = document.getElementById('form-feedback');
-    const updatesList = document.getElementById('updates-list');
 
     function formatPercent(value) {
         return `${value.toFixed(1)}%`;
@@ -50,12 +49,6 @@ document.addEventListener('DOMContentLoaded', () => {
         letterGrade.textContent = getLetterGrade(weighted);
     }
 
-    function addUpdate(message) {
-        const item = document.createElement('li');
-        item.textContent = message;
-        updatesList.prepend(item);
-    }
-
     form.addEventListener('submit', event => {
         event.preventDefault();
 
@@ -96,7 +89,6 @@ document.addEventListener('DOMContentLoaded', () => {
                 studentSummary.textContent = 'No student selected yet.';
             }
             updateSummary();
-            addUpdate(`Removed assignment: ${assignmentName}`);
         });
 
         gradesBody.appendChild(row);
@@ -104,7 +96,6 @@ document.addEventListener('DOMContentLoaded', () => {
         updateSummary();
         formFeedback.textContent = `Added ${assignmentName} for ${studentName}.`;
         formFeedback.style.color = '#16a34a';
-        addUpdate(`Added ${assignmentName} (${category}) with ${formatPercent(percent)}.`);
         form.reset();
         form.weight.value = '1';
     });
