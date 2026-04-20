@@ -49,6 +49,7 @@ document.addEventListener('DOMContentLoaded', () => {
         letterGrade.textContent = getLetterGrade(weighted);
     }
 
+    
     form.addEventListener('submit', event => {
         event.preventDefault();
 
